@@ -1,0 +1,4 @@
+/test_*
+/train_*
+
+*.zip

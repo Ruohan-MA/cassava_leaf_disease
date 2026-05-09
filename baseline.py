@@ -14,9 +14,9 @@ from sklearn.metrics import f1_score, precision_recall_fscore_support
 from config import Config, NUM_CLASSES
 from augmentations import build_train_transform, build_val_transform
 from data_utils import (
+    BalancedBatchSampler,
     LeafDataset,
     compute_class_weights,
-    make_balanced_sampler,
     make_splits,
     set_seeds,
 )
@@ -122,11 +122,10 @@ def train(cfg: Config = None):
     class_weights = compute_class_weights(train_labels, NUM_CLASSES).to(device)
 
     if cfg.use_balanced_sampler:
-        sampler = make_balanced_sampler(train_labels, NUM_CLASSES)
+        batch_sampler = BalancedBatchSampler(train_labels, NUM_CLASSES, cfg.batch_size)
         train_loader = DataLoader(
             train_dataset,
-            batch_size=cfg.batch_size,
-            sampler=sampler,
+            batch_sampler=batch_sampler,
             num_workers=cfg.num_workers,
             pin_memory=True,
         )
@@ -165,7 +164,7 @@ def train(cfg: Config = None):
     metrics_path = Path(cfg.data_dir) / cfg.metrics_file
     write_metrics_header(metrics_path)
 
-    best_val_accuracy = 0.0
+    best_val_accuracy = float("-inf")
     best_checkpoint = checkpoint_path / "baseline_best.pt"
 
     print(f"Training supervised baseline on {len(train_dataset)} samples, "

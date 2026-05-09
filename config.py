@@ -86,6 +86,11 @@ class Config:
                 "use_weighted_ce and use_balanced_sampler cannot both be True. "
                 "Choose exactly one class imbalance strategy."
             )
+        if not self.use_weighted_ce and not self.use_balanced_sampler:
+            raise ConfigError(
+                "Exactly one class imbalance strategy must be active. "
+                "Set either use_weighted_ce=True or use_balanced_sampler=True."
+            )
         if self.backbone not in BACKBONE_FEATURE_DIM:
             raise KeyError(
                 f"Unsupported backbone '{self.backbone}'. "

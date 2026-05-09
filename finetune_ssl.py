@@ -18,9 +18,9 @@ from torch.utils.data import DataLoader
 from config import Config, ConfigError, NUM_CLASSES
 from augmentations import build_train_transform, build_val_transform
 from data_utils import (
+    BalancedBatchSampler,
     LeafDataset,
     compute_class_weights,
-    make_balanced_sampler,
     make_splits,
     set_seeds,
 )
@@ -74,11 +74,10 @@ def train(
     class_weights = compute_class_weights(train_labels, NUM_CLASSES).to(device)
 
     if cfg.use_balanced_sampler:
-        sampler = make_balanced_sampler(train_labels, NUM_CLASSES)
+        batch_sampler = BalancedBatchSampler(train_labels, NUM_CLASSES, cfg.batch_size)
         train_loader = DataLoader(
             train_dataset,
-            batch_size=cfg.batch_size,
-            sampler=sampler,
+            batch_sampler=batch_sampler,
             num_workers=cfg.num_workers,
             pin_memory=True,
         )
@@ -139,7 +138,7 @@ def train(
     metrics_path = Path(cfg.data_dir) / cfg.finetune_metrics_file
     write_metrics_header(metrics_path)
 
-    best_val_accuracy = 0.0
+    best_val_accuracy = float("-inf")
     best_checkpoint = checkpoint_path / f"finetune_{mode}_best.pt"
 
     print(

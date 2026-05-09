@@ -58,7 +58,7 @@ class BYOL(nn.Module):
 
     def forward(
         self, x1: torch.Tensor, x2: torch.Tensor
-    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         z1_online = self.projection_head(self.backbone(x1))
         z2_online = self.projection_head(self.backbone(x2))
         p1 = self.prediction_head(z1_online)
@@ -68,7 +68,7 @@ class BYOL(nn.Module):
             z1_target = self.target_projection_head(self.target_backbone(x1))
             z2_target = self.target_projection_head(self.target_backbone(x2))
 
-        return p1, p2, z1_target.detach(), z2_target.detach()
+        return p1, p2, z1_target.detach(), z2_target.detach(), z1_online, z2_online
 
     @torch.no_grad()
     def update_target(self, momentum: float) -> None:
@@ -146,7 +146,7 @@ def train(cfg: Config = None):
             view1, view2 = view1.to(device), view2.to(device)
             optimizer.zero_grad()
 
-            p1, p2, z1, z2 = model(view1, view2)
+            p1, p2, z1, z2, z1_online, z2_online = model(view1, view2)
             loss = 0.5 * (criterion(p1, z2) + criterion(p2, z1))
             loss.backward()
             optimizer.step()
@@ -155,7 +155,7 @@ def train(cfg: Config = None):
             epoch_loss += loss.item() * view1.size(0)
 
             with torch.no_grad():
-                all_proj_vecs.append(p1.detach().cpu())
+                all_proj_vecs.append(z1_online.detach().cpu())
 
         scheduler.step()
 

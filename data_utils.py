@@ -7,7 +7,7 @@ import pandas as pd
 import torch
 from PIL import Image
 from sklearn.model_selection import StratifiedShuffleSplit
-from torch.utils.data import Dataset, WeightedRandomSampler
+from torch.utils.data import Dataset
 
 from config import Config, NUM_CLASSES
 
@@ -71,15 +71,46 @@ def compute_class_weights(labels: np.ndarray, n_classes: int) -> torch.Tensor:
     return torch.tensor(weights, dtype=torch.float32)
 
 
-def make_balanced_sampler(labels: np.ndarray, n_classes: int) -> WeightedRandomSampler:
-    """Return a WeightedRandomSampler that balances class frequencies."""
-    class_weights = compute_class_weights(labels, n_classes)
-    sample_weights = class_weights[labels]
-    return WeightedRandomSampler(
-        weights=sample_weights.tolist(),
-        num_samples=len(sample_weights),
-        replacement=True,
-    )
+class BalancedBatchSampler:
+    """
+    Yields batches where class counts differ by at most 1.
+
+    Each batch contains floor(batch_size / n_classes) samples from each class,
+    with the remainder distributed across the first (batch_size % n_classes) classes.
+    Per-class pools are re-shuffled independently when exhausted.
+    """
+
+    def __init__(self, labels: np.ndarray, n_classes: int, batch_size: int):
+        self.n_classes = n_classes
+        self.batch_size = batch_size
+        self.class_indices = [
+            np.where(labels == c)[0].tolist() for c in range(n_classes)
+        ]
+        self._n_batches = sum(len(p) for p in self.class_indices) // batch_size
+
+    def __len__(self) -> int:
+        return self._n_batches
+
+    def __iter__(self):
+        pools = [pool.copy() for pool in self.class_indices]
+        for pool in pools:
+            random.shuffle(pool)
+        pos = [0] * self.n_classes
+        base = self.batch_size // self.n_classes
+        remainder = self.batch_size % self.n_classes
+
+        for _ in range(self._n_batches):
+            batch = []
+            for c in range(self.n_classes):
+                count = base + (1 if c < remainder else 0)
+                for _ in range(count):
+                    if pos[c] >= len(pools[c]):
+                        random.shuffle(pools[c])
+                        pos[c] = 0
+                    batch.append(pools[c][pos[c]])
+                    pos[c] += 1
+            random.shuffle(batch)
+            yield batch
 
 
 class LeafDataset(Dataset):

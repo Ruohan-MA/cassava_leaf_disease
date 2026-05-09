@@ -1,4 +1,5 @@
 /test_*
 /train_*
-
+.humanize
 *.zip
+

@@ -3,3 +3,4 @@
 .humanize
 *.zip
 
+__pycache__/

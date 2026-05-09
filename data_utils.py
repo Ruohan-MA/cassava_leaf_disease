@@ -1,4 +1,3 @@
-import os
 import random
 from pathlib import Path
 
@@ -9,7 +8,7 @@ from PIL import Image
 from sklearn.model_selection import StratifiedShuffleSplit
 from torch.utils.data import Dataset
 
-from config import Config, NUM_CLASSES
+from config import Config, ConfigError, NUM_CLASSES
 
 
 def set_seeds(seed: int) -> None:
@@ -170,11 +169,9 @@ def get_ssl_image_paths(cfg: Config) -> list[Path]:
     """
     Collect image paths for BYOL pretraining from train_images/ only.
 
-    Raises DataSourceError if the configured train_images_dir matches the test directory
+    Raises ConfigError if the configured train_images_dir matches the test directory
     or if it does not exist.
     """
-    from config import ConfigError
-
     train_dir = cfg.train_images_path
     test_dir = cfg.test_images_path
 

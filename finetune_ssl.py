@@ -15,7 +15,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 
-from config import Config, ConfigError, NUM_CLASSES
+from config import Config, NUM_CLASSES
 from augmentations import build_train_transform, build_val_transform
 from data_utils import (
     BalancedBatchSampler,
@@ -47,11 +47,6 @@ def train(
 
     if mode not in ("linear_probe", "full_finetune"):
         raise ValueError(f"mode must be 'linear_probe' or 'full_finetune', got '{mode}'")
-
-    if cfg.use_weighted_ce and cfg.use_balanced_sampler:
-        raise ConfigError(
-            "use_weighted_ce and use_balanced_sampler cannot both be True."
-        )
 
     set_seeds(cfg.seed)
     device = torch.device(cfg.device)

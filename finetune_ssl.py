@@ -148,6 +148,8 @@ def train(
 
     for epoch in range(1, cfg.finetune_epochs + 1):
         model.train()
+        if mode == "linear_probe":
+            model.backbone.eval()
         epoch_loss = 0.0
         for images, labels in train_loader:
             images, labels = images.to(device), labels.to(device)

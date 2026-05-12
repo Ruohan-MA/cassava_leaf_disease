@@ -1,0 +1,46 @@
+/workspace/cassava_leaf_disease/model_utils.py:55: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state_dict = torch.load(path, map_location="cpu")
+Full fine-tune mode: backbone lr=0.0001, head lr=0.001.
+Fine-tuning (full_finetune) on 17117 samples, validating on 4280 samples.
+Epoch 001/30  train_loss=0.8929  val_acc=0.7853  macro_f1=0.6717
+  -> Saved best checkpoint (val_accuracy=0.7853)
+Epoch 002/30  train_loss=0.6561  val_acc=0.7701  macro_f1=0.6680
+Epoch 003/30  train_loss=0.5836  val_acc=0.7991  macro_f1=0.6860
+  -> Saved best checkpoint (val_accuracy=0.7991)
+Epoch 004/30  train_loss=0.5085  val_acc=0.8002  macro_f1=0.6780
+  -> Saved best checkpoint (val_accuracy=0.8002)
+Epoch 005/30  train_loss=0.4476  val_acc=0.7582  macro_f1=0.6542
+Epoch 006/30  train_loss=0.3917  val_acc=0.8208  macro_f1=0.6986
+  -> Saved best checkpoint (val_accuracy=0.8208)
+Epoch 007/30  train_loss=0.3355  val_acc=0.8028  macro_f1=0.6873
+Epoch 008/30  train_loss=0.2793  val_acc=0.8157  macro_f1=0.6905
+Epoch 009/30  train_loss=0.2380  val_acc=0.7991  macro_f1=0.6770
+Epoch 010/30  train_loss=0.2082  val_acc=0.8217  macro_f1=0.6940
+  -> Saved best checkpoint (val_accuracy=0.8217)
+Epoch 011/30  train_loss=0.1895  val_acc=0.8129  macro_f1=0.6869
+Epoch 012/30  train_loss=0.1497  val_acc=0.8110  macro_f1=0.6895
+Epoch 013/30  train_loss=0.1388  val_acc=0.8042  macro_f1=0.6789
+Epoch 014/30  train_loss=0.1091  val_acc=0.8112  macro_f1=0.6816
+Epoch 015/30  train_loss=0.0877  val_acc=0.8217  macro_f1=0.6930
+Epoch 016/30  train_loss=0.0753  val_acc=0.8245  macro_f1=0.6918
+  -> Saved best checkpoint (val_accuracy=0.8245)
+Epoch 017/30  train_loss=0.0654  val_acc=0.8192  macro_f1=0.6898
+Epoch 018/30  train_loss=0.0495  val_acc=0.8227  macro_f1=0.6932
+Epoch 019/30  train_loss=0.0411  val_acc=0.8287  macro_f1=0.7035
+  -> Saved best checkpoint (val_accuracy=0.8287)
+Epoch 020/30  train_loss=0.0353  val_acc=0.8294  macro_f1=0.7001
+  -> Saved best checkpoint (val_accuracy=0.8294)
+Epoch 021/30  train_loss=0.0307  val_acc=0.8294  macro_f1=0.7129
+Epoch 022/30  train_loss=0.0276  val_acc=0.8343  macro_f1=0.7084
+  -> Saved best checkpoint (val_accuracy=0.8343)
+Epoch 023/30  train_loss=0.0261  val_acc=0.8341  macro_f1=0.7107
+Epoch 024/30  train_loss=0.0251  val_acc=0.8360  macro_f1=0.7120
+  -> Saved best checkpoint (val_accuracy=0.8360)
+Epoch 025/30  train_loss=0.0223  val_acc=0.8336  macro_f1=0.7070
+Epoch 026/30  train_loss=0.0208  val_acc=0.8355  macro_f1=0.7117
+Epoch 027/30  train_loss=0.0217  val_acc=0.8350  macro_f1=0.7092
+Epoch 028/30  train_loss=0.0195  val_acc=0.8346  macro_f1=0.7080
+Epoch 029/30  train_loss=0.0200  val_acc=0.8336  macro_f1=0.7065
+Epoch 030/30  train_loss=0.0189  val_acc=0.8336  macro_f1=0.7083
+Fine-tuning complete. Best val accuracy: 0.8360
+Best checkpoint: checkpoints/finetune_full_finetune_best.pt

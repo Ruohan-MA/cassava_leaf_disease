@@ -1,0 +1,115 @@
+BYOL pretraining on 21397 images from train_images
+Starting BYOL pretraining for 100 epochs.
+Epoch 001/100  loss=-0.6307  proj_std=0.9378
+Epoch 002/100  loss=-0.7767  proj_std=1.1134
+Epoch 003/100  loss=-0.8484  proj_std=1.2711
+Epoch 004/100  loss=-0.8809  proj_std=1.3824
+Epoch 005/100  loss=-0.8988  proj_std=1.4514
+Epoch 006/100  loss=-0.9078  proj_std=1.5052
+Epoch 007/100  loss=-0.9159  proj_std=1.5467
+Epoch 008/100  loss=-0.9212  proj_std=1.5828
+Epoch 009/100  loss=-0.9248  proj_std=1.6150
+Epoch 010/100  loss=-0.9288  proj_std=1.6387
+  -> Saved backbone checkpoint at epoch 10
+Epoch 011/100  loss=-0.9304  proj_std=1.6615
+Epoch 012/100  loss=-0.9329  proj_std=1.6788
+Epoch 013/100  loss=-0.9349  proj_std=1.6949
+Epoch 014/100  loss=-0.9365  proj_std=1.7109
+Epoch 015/100  loss=-0.9378  proj_std=1.7228
+Epoch 016/100  loss=-0.9398  proj_std=1.7323
+Epoch 017/100  loss=-0.9410  proj_std=1.7438
+Epoch 018/100  loss=-0.9417  proj_std=1.7523
+Epoch 019/100  loss=-0.9420  proj_std=1.7637
+Epoch 020/100  loss=-0.9429  proj_std=1.7714
+  -> Saved backbone checkpoint at epoch 20
+Epoch 021/100  loss=-0.9441  proj_std=1.7767
+Epoch 022/100  loss=-0.9443  proj_std=1.7814
+Epoch 023/100  loss=-0.9450  proj_std=1.7844
+Epoch 024/100  loss=-0.9466  proj_std=1.7861
+Epoch 025/100  loss=-0.9464  proj_std=1.7889
+Epoch 026/100  loss=-0.9475  proj_std=1.7902
+Epoch 027/100  loss=-0.9480  proj_std=1.7894
+Epoch 028/100  loss=-0.9480  proj_std=1.7877
+Epoch 029/100  loss=-0.9483  proj_std=1.7845
+Epoch 030/100  loss=-0.9485  proj_std=1.7816
+  -> Saved backbone checkpoint at epoch 30
+Epoch 031/100  loss=-0.9485  proj_std=1.7777
+Epoch 032/100  loss=-0.9492  proj_std=1.7757
+Epoch 033/100  loss=-0.9498  proj_std=1.7702
+Epoch 034/100  loss=-0.9494  proj_std=1.7645
+Epoch 035/100  loss=-0.9497  proj_std=1.7603
+Epoch 036/100  loss=-0.9505  proj_std=1.7517
+Epoch 037/100  loss=-0.9505  proj_std=1.7429
+Epoch 038/100  loss=-0.9504  proj_std=1.7360
+Epoch 039/100  loss=-0.9510  proj_std=1.7250
+Epoch 040/100  loss=-0.9513  proj_std=1.7150
+  -> Saved backbone checkpoint at epoch 40
+Epoch 041/100  loss=-0.9514  proj_std=1.7037
+Epoch 042/100  loss=-0.9515  proj_std=1.6923
+Epoch 043/100  loss=-0.9516  proj_std=1.6802
+Epoch 044/100  loss=-0.9518  proj_std=1.6663
+Epoch 045/100  loss=-0.9521  proj_std=1.6527
+Epoch 046/100  loss=-0.9526  proj_std=1.6380
+Epoch 047/100  loss=-0.9522  proj_std=1.6232
+Epoch 048/100  loss=-0.9527  proj_std=1.6074
+Epoch 049/100  loss=-0.9529  proj_std=1.5906
+Epoch 050/100  loss=-0.9531  proj_std=1.5751
+  -> Saved backbone checkpoint at epoch 50
+Epoch 051/100  loss=-0.9530  proj_std=1.5580
+Epoch 052/100  loss=-0.9534  proj_std=1.5393
+Epoch 053/100  loss=-0.9539  proj_std=1.5218
+Epoch 054/100  loss=-0.9537  proj_std=1.5041
+Epoch 055/100  loss=-0.9539  proj_std=1.4860
+Epoch 056/100  loss=-0.9542  proj_std=1.4677
+Epoch 057/100  loss=-0.9539  proj_std=1.4489
+Epoch 058/100  loss=-0.9543  proj_std=1.4283
+Epoch 059/100  loss=-0.9540  proj_std=1.4099
+Epoch 060/100  loss=-0.9548  proj_std=1.3928
+  -> Saved backbone checkpoint at epoch 60
+Epoch 061/100  loss=-0.9547  proj_std=1.3726
+Epoch 062/100  loss=-0.9551  proj_std=1.3532
+Epoch 063/100  loss=-0.9549  proj_std=1.3340
+Epoch 064/100  loss=-0.9548  proj_std=1.3149
+Epoch 065/100  loss=-0.9548  proj_std=1.2969
+Epoch 066/100  loss=-0.9553  proj_std=1.2781
+Epoch 067/100  loss=-0.9559  proj_std=1.2598
+Epoch 068/100  loss=-0.9552  proj_std=1.2418
+Epoch 069/100  loss=-0.9558  proj_std=1.2238
+Epoch 070/100  loss=-0.9559  proj_std=1.2060
+  -> Saved backbone checkpoint at epoch 70
+Epoch 071/100  loss=-0.9556  proj_std=1.1891
+Epoch 072/100  loss=-0.9555  proj_std=1.1731
+Epoch 073/100  loss=-0.9556  proj_std=1.1566
+Epoch 074/100  loss=-0.9558  proj_std=1.1413
+Epoch 075/100  loss=-0.9555  proj_std=1.1264
+Epoch 076/100  loss=-0.9558  proj_std=1.1117
+Epoch 077/100  loss=-0.9555  proj_std=1.0985
+Epoch 078/100  loss=-0.9557  proj_std=1.0849
+Epoch 079/100  loss=-0.9559  proj_std=1.0716
+Epoch 080/100  loss=-0.9561  proj_std=1.0593
+  -> Saved backbone checkpoint at epoch 80
+Epoch 081/100  loss=-0.9557  proj_std=1.0481
+Epoch 082/100  loss=-0.9557  proj_std=1.0371
+Epoch 083/100  loss=-0.9557  proj_std=1.0263
+Epoch 084/100  loss=-0.9556  proj_std=1.0169
+Epoch 085/100  loss=-0.9553  proj_std=1.0077
+Epoch 086/100  loss=-0.9551  proj_std=0.9996
+Epoch 087/100  loss=-0.9555  proj_std=0.9917
+Epoch 088/100  loss=-0.9555  proj_std=0.9839
+Epoch 089/100  loss=-0.9552  proj_std=0.9775
+Epoch 090/100  loss=-0.9552  proj_std=0.9712
+  -> Saved backbone checkpoint at epoch 90
+Epoch 091/100  loss=-0.9549  proj_std=0.9656
+Epoch 092/100  loss=-0.9550  proj_std=0.9609
+Epoch 093/100  loss=-0.9550  proj_std=0.9564
+Epoch 094/100  loss=-0.9550  proj_std=0.9526
+Epoch 095/100  loss=-0.9546  proj_std=0.9497
+Epoch 096/100  loss=-0.9544  proj_std=0.9471
+Epoch 097/100  loss=-0.9543  proj_std=0.9450
+Epoch 098/100  loss=-0.9542  proj_std=0.9437
+Epoch 099/100  loss=-0.9544  proj_std=0.9430
+Epoch 100/100  loss=-0.9543  proj_std=0.9427
+  -> Saved backbone checkpoint at epoch 100
+BYOL pretraining complete.
+Final backbone checkpoint: checkpoints/backbone_weights.pt
+SSL metrics: checkpoints/ssl_metrics.csv
